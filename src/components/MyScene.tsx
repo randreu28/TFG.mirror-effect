@@ -1,4 +1,5 @@
 import { OrbitControls } from "@react-three/drei";
+import { Model } from "./Model";
 
 type Props = {};
 
@@ -8,10 +9,7 @@ export default function MyScene({}: Props) {
       <OrbitControls />
       <ambientLight />
       <pointLight position={[1, 1, 1]} />
-      <mesh>
-        <boxGeometry args={[1, 1, 1]} />
-        <meshStandardMaterial color="red" />
-      </mesh>
+      <Model position={[0, -2.5, 0]} />
     </>
   );
 }
