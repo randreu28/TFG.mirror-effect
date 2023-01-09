@@ -2,6 +2,13 @@
 # yarn lockfile v1
 
 
+"@a7sc11u/scramble@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@a7sc11u/scramble/-/scramble-0.0.6.tgz#97af23e54772987efbd5a5f5bcd94f5f29e203ec"
+  integrity sha512-iiBllEXYGx4ER3z1HGi5aHon8zDc5HABBi21/2Zd8VSWhO/XGb+ORyZ5O0BVHGGEfUejJuv0Zm/Dvtfyk4lpJQ==
+  dependencies:
+    "@radix-ui/react-polymorphic" "^0.0.1"
+
 "@ampproject/remapping@^2.1.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@ampproject/remapping/-/remapping-2.2.0.tgz#56c133824780de3174aed5ab6834f3026790154d"
@@ -413,6 +420,11 @@
   dependencies:
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
+
+"@radix-ui/react-polymorphic@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-polymorphic/-/react-polymorphic-0.0.1.tgz#52e1a22374eec05a34a902e112e081f36e7e2b3b"
+  integrity sha512-oKP9mx114Wr/UlSyo/wgsHdckfgq3+yKoIXmNThOGzzlN+cikppwxAZK+z6NriO0p5Hyka/8xSFqGZokiS9Lxw==
 
 "@react-spring/animated@~9.6.1":
   version "9.6.1"

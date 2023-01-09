@@ -6,10 +6,11 @@ type Props = {};
 export default function MyScene({}: Props) {
   return (
     <>
-      <OrbitControls />
       <ambientLight />
-      <pointLight position={[1, 1, 1]} />
-      <Model position={[0, -2.5, 0]} />
+      <OrbitControls />
+      <Model position={[0, -3, 0]} />
+
+      <pointLight position={[1, 1, 1]} color="green" />
     </>
   );
 }

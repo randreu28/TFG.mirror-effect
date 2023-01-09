@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@a7sc11u/scramble": "^0.0.6",
     "@react-three/drei": "^9.51.22",
     "@react-three/fiber": "^8.10.0",
     "react": "^18.2.0",

@@ -1,3 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+html {
+  @apply font-['Major_Mono_Display'];
+  @apply bg-gray-900;
+  @apply text-white;
+}
