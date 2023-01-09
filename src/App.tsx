@@ -1,6 +1,6 @@
 import { TextScramble } from "@a7sc11u/scramble";
 import { Canvas } from "@react-three/fiber";
-import { useRef } from "react";
+import { Suspense, useRef } from "react";
 import MyScene from "./components/MyScene";
 
 export default function App() {
@@ -18,9 +18,11 @@ export default function App() {
         />
       </div>
       <div className="w-screen h-screen absolute left-0 top-0 z-10">
-        <Canvas>
-          <MyScene />
-        </Canvas>
+        <Suspense fallback={<>...loading</>}>
+          <Canvas>
+            <MyScene />
+          </Canvas>
+        </Suspense>
       </div>
     </>
   );
