@@ -1,4 +1,4 @@
-import { OrbitControls, Plane } from "@react-three/drei";
+import { Environment, OrbitControls } from "@react-three/drei";
 import { useMemo } from "react";
 import * as THREE from "three";
 import Mirror from "./Mirror";
@@ -25,21 +25,25 @@ export default function MyScene({}: Props) {
       return result;
     }
 
-    return groupByVectors(Icosahedron, 3, 5);
+    return groupByVectors(Icosahedron, 3, 6);
   }, []);
 
   return (
     <>
+      <OrbitControls />
+      <Environment preset="night" />
+
       {mirrorVectors.map((vector3, key) => {
-        return <Plane key={key} position={vector3} />;
+        return (
+          <Mirror
+            rotation={new THREE.Euler().setFromVector3(vector3)}
+            key={key}
+            position={vector3}
+          />
+        );
       })}
 
-      <ambientLight />
-      <OrbitControls />
       <Model position={[0, -3, 0]} />
-      <Mirror position={[0, -3, 0]} rotation={[Math.PI * 2.5, 0, 0]} />
-
-      <pointLight position={[1, 1, 1]} color="green" />
     </>
   );
 }
