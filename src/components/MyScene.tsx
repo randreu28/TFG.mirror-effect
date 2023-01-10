@@ -7,25 +7,37 @@ import { Model } from "./Model";
 
 type Props = {};
 
-export default function MyScene({}: Props) {
-  const mirrorVectors = useMemo(() => {
-    const Icosahedron = new THREE.IcosahedronGeometry().attributes.normal.array;
+type mirror = {
+  position: THREE.Vector3;
+  rotation: THREE.Euler;
+};
 
-    function groupByVectors(data: any, length: number, scale: number) {
-      let result = [];
+export default function MyScene({}: Props) {
+  const mirrors = useMemo(() => {
+    /**
+     * Generates a cloud of points based on the data array of an object.
+     *
+     * @param data - The raw data array of an object
+     * @param length - The length on which the data array must be subarrayed
+     * @returns an array of objects with position and rotation
+     */
+    function generateMirrorCloud(data: any, length: number, scale: number) {
+      let mirrors: mirror[] = [];
       for (let i = 0; i < data.length; i += length) {
         const dataArray = data.subarray(i, i + length);
-        const newVertice = new THREE.Vector3(
+        const newPosition = new THREE.Vector3(
           dataArray[0] * scale, // x
           dataArray[1] * scale, // y
           dataArray[2] * scale // z
         );
-        result.push(newVertice);
+        const newRotation = new THREE.Euler().setFromVector3(newPosition);
+        mirrors.push({ position: newPosition, rotation: newRotation });
       }
-      return result;
+      return mirrors;
     }
 
-    return groupByVectors(Icosahedron, 3, 6);
+    const Icosahedron = new THREE.IcosahedronGeometry().attributes.normal.array;
+    return generateMirrorCloud(Icosahedron, 3, 6);
   }, []);
 
   return (
@@ -33,12 +45,12 @@ export default function MyScene({}: Props) {
       <OrbitControls />
       <Environment preset="night" />
 
-      {mirrorVectors.map((vector3, key) => {
+      {mirrors.map((mirror, key) => {
         return (
           <Mirror
-            rotation={new THREE.Euler().setFromVector3(vector3)}
+            position={mirror.position}
+            rotation={mirror.rotation}
             key={key}
-            position={vector3}
           />
         );
       })}
