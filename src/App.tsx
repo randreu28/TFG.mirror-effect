@@ -18,10 +18,10 @@ export default function App() {
   return (
     <>
       <Leva hidden={controlSwitch} />
-      <div className="text-center text-4xl font-extrabold w-1/2 mx-auto pt-10">
+      <div className="text-center text-4xl font-extrabold w-1/2 mx-auto pt-10 z-20 relative">
         <TextScramble
           as="h1"
-          className="leading-loose"
+          className="leading-loose absolute"
           ref={ref}
           play={true}
           text="The future is around us. You just have to look."
