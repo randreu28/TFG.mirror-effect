@@ -1,5 +1,6 @@
 import { Environment, OrbitControls } from "@react-three/drei";
-import { useMemo } from "react";
+import { useFrame } from "@react-three/fiber";
+import { useMemo, useRef } from "react";
 import * as THREE from "three";
 import Mirror from "./Mirror";
 
@@ -40,20 +41,38 @@ export default function MyScene({}: Props) {
     return generateMirrorCloud(Icosahedron, 3, 6);
   }, []);
 
+  const mirrorGroup = useRef<THREE.Group>(null!);
+
+  useFrame((state) => {
+    const t = state.clock.elapsedTime;
+    const currentPosition = mirrorGroup.current.position;
+    const currentRotation = mirrorGroup.current.rotation;
+
+    currentPosition.set(
+      currentPosition.x,
+      currentPosition.y + Math.sin(t) * 0.005,
+      currentPosition.z
+    );
+
+    currentRotation.set(t * 0.025, t * 0.025, t * 0.025);
+  });
+
   return (
     <>
       <OrbitControls />
       <Environment preset="night" />
 
-      {mirrors.map((mirror, key) => {
-        return (
-          <Mirror
-            position={mirror.position}
-            rotation={mirror.rotation}
-            key={key}
-          />
-        );
-      })}
+      <group ref={mirrorGroup}>
+        {mirrors.map((mirror, key) => {
+          return (
+            <Mirror
+              position={mirror.position}
+              rotation={mirror.rotation}
+              key={key}
+            />
+          );
+        })}
+      </group>
 
       <Model position={[0, -3, 0]} />
     </>
