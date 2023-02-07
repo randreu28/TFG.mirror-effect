@@ -16,9 +16,11 @@ export default function Mirror(props: JSX.IntrinsicElements["mesh"]) {
     mirror: 0,
   });
 
+  const { size } = useControls({ size: [0.05, 3, 3] });
+
   return (
     <mesh {...props}>
-      <boxGeometry args={[0.05, 1, 1]} />
+      <boxGeometry args={size} />
       <MeshReflectorMaterial {...config} />
     </mesh>
   );
