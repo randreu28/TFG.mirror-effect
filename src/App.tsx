@@ -1,13 +1,23 @@
 import { TextScramble } from "@a7sc11u/scramble";
 import { Canvas } from "@react-three/fiber";
-import { Suspense, useRef } from "react";
+import { Leva } from "leva";
+import { Suspense, useEffect, useRef, useState } from "react";
 import MyScene from "./components/MyScene";
 
 export default function App() {
   const ref = useRef<HTMLDivElement>(null)!;
 
+  const [controlSwitch, setControlSwtich] = useState<boolean>(true);
+
+  useEffect(() => {
+    window.addEventListener("keydown", (e) => {
+      if (e.altKey && e.key == "h") setControlSwtich(!controlSwitch);
+    });
+  }, [controlSwitch]);
+
   return (
     <>
+      <Leva hidden={controlSwitch} />
       <div className="text-center text-4xl font-extrabold w-1/2 mx-auto pt-10">
         <TextScramble
           as="h1"
