@@ -12,6 +12,6 @@
 
 html {
   @apply font-['Major_Mono_Display'];
-  @apply bg-gray-900;
+  @apply bg-black;
   @apply text-white;
 }
