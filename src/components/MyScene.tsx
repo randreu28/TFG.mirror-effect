@@ -1,10 +1,13 @@
 import { Environment, OrbitControls } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
+import { EffectComposer } from "@react-three/postprocessing";
 import { useMemo, useRef } from "react";
 import * as THREE from "three";
 import Mirror from "./Mirror";
 
 import { Model } from "./Model";
+import { Glitch } from "@react-three/postprocessing";
+import { Vector2 } from "three";
 
 type Props = {};
 
@@ -61,6 +64,14 @@ export default function MyScene({}: Props) {
     <>
       <OrbitControls />
       <Environment preset="night" />
+
+      <EffectComposer>
+        <Glitch
+          strength={new Vector2(1, 1)}
+          duration={new Vector2(0.25, 0.25)}
+          delay={new Vector2(5, 5)}
+        />
+      </EffectComposer>
 
       <group ref={mirrorGroup}>
         {mirrors.map((mirror, key) => {
