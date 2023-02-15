@@ -1,13 +1,13 @@
-import { TextScramble } from "@a7sc11u/scramble";
 import { Canvas } from "@react-three/fiber";
 import { Leva } from "leva";
-import { Suspense, useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
+import Intro from "./components/Intro";
 import MyScene from "./components/MyScene";
+import Spinner from "./components/Spinner";
 
 export default function App() {
-  const ref = useRef<HTMLDivElement>(null)!;
-
   const [controlsSwitch, setControlsSwitch] = useState<boolean>(true);
+  const [consent, setConsent] = useState<boolean>(false);
 
   useEffect(() => {
     window.addEventListener("keydown", (e) => {
@@ -15,20 +15,16 @@ export default function App() {
     });
   }, [controlsSwitch]);
 
+  if (!consent) {
+    return <Intro setConsent={setConsent} />;
+  }
+
   return (
     <>
       <Leva hidden={controlsSwitch} />
-      <div className="text-center text-4xl font-extrabold w-1/2 mx-auto pt-10 z-20 relative">
-        <TextScramble
-          as="h1"
-          className="leading-loose absolute"
-          ref={ref}
-          play={true}
-          text="The future is around us. You just have to look."
-        />
-      </div>
+
       <div className="w-screen h-screen absolute left-0 top-0 z-10">
-        <Suspense fallback={<>...loading</>}>
+        <Suspense fallback={<Spinner />}>
           <Canvas>
             <MyScene />
           </Canvas>
