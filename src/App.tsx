@@ -7,17 +7,17 @@ import MyScene from "./components/MyScene";
 export default function App() {
   const ref = useRef<HTMLDivElement>(null)!;
 
-  const [controlSwitch, setControlSwtich] = useState<boolean>(true);
+  const [controlsSwitch, setControlsSwitch] = useState<boolean>(true);
 
   useEffect(() => {
     window.addEventListener("keydown", (e) => {
-      if (e.altKey && e.key == "h") setControlSwtich(!controlSwitch);
+      if (e.altKey && e.key == "h") setControlsSwitch(!controlsSwitch);
     });
-  }, [controlSwitch]);
+  }, [controlsSwitch]);
 
   return (
     <>
-      <Leva hidden={controlSwitch} />
+      <Leva hidden={controlsSwitch} />
       <div className="text-center text-4xl font-extrabold w-1/2 mx-auto pt-10 z-20 relative">
         <TextScramble
           as="h1"
