@@ -1,10 +1,10 @@
 export default function Signature() {
   return (
     <>
-      <p className="absolute top-10 left-10 z-10 font-mono">
+      <span className="absolute top-10 left-10 z-10 font-mono">
         <p>Bachelor's Thesis</p>
         <p>Interactive 3D components</p>
-      </p>
+      </span>
 
       <p className="absolute right-10 bottom-10 z-10 space-y-5 font-mono">
         15/02/2023

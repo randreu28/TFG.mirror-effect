@@ -40,7 +40,15 @@ export default function MyScene({}: Props) {
       return mirrors;
     }
 
-    const Icosahedron = new THREE.IcosahedronGeometry().attributes.normal.array;
+    const _Icoshaderon = new THREE.IcosahedronGeometry().attributes.normal;
+    let Icosahedron: ArrayLike<number> | undefined;
+
+    if (_Icoshaderon instanceof THREE.Float32BufferAttribute) {
+      Icosahedron = _Icoshaderon.array;
+    } else {
+      throw Error("Type error");
+    }
+
     return generateMirrorCloud(Icosahedron, 3, 6);
   }, []);
 
