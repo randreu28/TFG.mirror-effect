@@ -1,4 +1,4 @@
-import { Environment, OrbitControls } from "@react-three/drei";
+import { Environment, Grid, OrbitControls } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { EffectComposer } from "@react-three/postprocessing";
 import { useMemo, useRef } from "react";
@@ -63,6 +63,18 @@ export default function MyScene({}: Props) {
   return (
     <>
       <OrbitControls />
+      <Grid
+        renderOrder={-1}
+        position={[0, -3, 0]}
+        infiniteGrid
+        cellSize={0.6}
+        cellThickness={0.6}
+        sectionSize={3.3}
+        sectionThickness={1.5}
+        cellColor={"white"}
+        sectionColor={"darkviolet"}
+        fadeDistance={30}
+      />
       <Environment preset="night" />
 
       <EffectComposer>
