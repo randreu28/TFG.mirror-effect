@@ -4,9 +4,10 @@ import { Suspense, useEffect, useState } from "react";
 import Intro from "./components/Intro";
 import MyScene from "./components/MyScene";
 import Spinner from "./components/Spinner";
+import Signature from "./components/Signature";
 
 export default function App() {
-  const [controlsSwitch, setControlsSwitch] = useState<boolean>(true);
+  const [controlsSwitch, setControlsSwitch] = useState<boolean>(false);
   const [consent, setConsent] = useState<boolean>(false);
 
   useEffect(() => {
@@ -21,10 +22,11 @@ export default function App() {
 
   return (
     <>
-      <Leva hidden={controlsSwitch} />
+      <Leva hidden={controlsSwitch}  />
 
       <div className="w-screen h-screen absolute left-0 top-0 z-10">
         <Suspense fallback={<Spinner />}>
+          <Signature/>
           <Canvas>
             <MyScene />
           </Canvas>
