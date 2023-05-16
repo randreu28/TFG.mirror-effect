@@ -1,10 +1,10 @@
 export default function Signature() {
   return (
     <>
-      <span className="absolute top-10 left-10 z-10 font-mono">
+      <a href="https://tfg-docs.vercel.app/" target="_blank" className="absolute top-10 left-10 z-10 font-mono hover:underline">
         <p>Bachelor's Thesis</p>
         <p>Interactive 3D components</p>
-      </span>
+      </a>
 
       <p className="absolute right-10 bottom-10 z-10 space-y-5 font-mono">
         15/02/2023
@@ -13,7 +13,7 @@ export default function Signature() {
       <a
         href="https://randreu.dev"
         target="_blank"
-        className="absolute bottom-10 left-10 z-10 max-w-xl flex gap-5 font-mono"
+        className="absolute bottom-10 left-10 z-10 max-w-xl flex gap-5 font-mono hover:underline"
       >
         <svg
           className="text-white fill-current h-10 w-fit"
